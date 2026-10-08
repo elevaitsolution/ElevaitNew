@@ -41,7 +41,7 @@
 
         @media (max-width: 768px) {
             :root {
-                --section-padding: 80px;
+                --section-padding: 56px;
             }
         }
 
@@ -249,7 +249,7 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-12);
-            max-width: 600px;
+            max-width: 790px;
         }
 
         .hero-subline {
@@ -1121,12 +1121,12 @@
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
             gap: var(--spacing-24);
             margin-top: var(--spacing-96);
         }
 
-        /* Cards stretch to a shared height. The stagger comes from swapping
-           the order of the two blocks, never from a margin offset. */
+          /* Grid cards stretch to a shared height and align their content at the top. */
         .testimonial-card {
             display: flex;
             flex-direction: column;
@@ -1135,14 +1135,6 @@
             border: 1px solid var(--line);
             border-radius: 20px;
             padding: var(--spacing-24);
-        }
-
-        .testimonial-card:nth-child(even) .testimonial-media {
-            order: 1;
-        }
-
-        .testimonial-card:nth-child(even) .testimonial-quote {
-            order: 2;
         }
 
         /* Native 51px canvas — the artwork only fills 37x27 of it, which is
@@ -1208,15 +1200,6 @@
             color: var(--text-3);
         }
 
-        /* Empty on purpose — a background-image drops straight onto this. */
-        .testimonial-media {
-            background-color: var(--surface2);
-            border-radius: 12px;
-            aspect-ratio: 1 / 1;
-            background-size: cover;
-            background-position: center;
-        }
-
         @media (max-width: 1024px) {
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1226,12 +1209,6 @@
         @media (max-width: 768px) {
             .testimonials-grid {
                 grid-template-columns: 1fr;
-            }
-
-            /* Every card back to quote-then-image. */
-            .testimonial-card:nth-child(even) .testimonial-media,
-            .testimonial-card:nth-child(even) .testimonial-quote {
-                order: 0;
             }
         }
 
@@ -1347,11 +1324,17 @@
         .faq-list {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-24);
+            gap: 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
         }
 
         .faq-heading {
             font: inherit;
+            margin: 0;
         }
 
         .faq-question {
@@ -1359,7 +1342,7 @@
             align-items: center;
             gap: 12px;
             width: 100%;
-            padding: 0;
+            padding: 28px 0;
             border: none;
             background: none;
             cursor: pointer;
@@ -1433,10 +1416,13 @@
         /* 30px indent = icon slot + gap, so the answer lines up with the
            question text rather than the icon. */
         .faq-answer p {
-            padding: var(--spacing-8) 0 0 30px;
+            box-sizing: border-box;
+            max-width: 760px;
+            margin: 0;
+            padding: 16px 0 28px 30px;
             font-family: 'Manrope', sans-serif;
-            font-size: 15px;
-            line-height: 1.5;
+            font-size: 17px;
+            line-height: 1.7;
             color: var(--text-2);
             transform: translateY(-4px);
             transition: transform 250ms ease;
@@ -1743,6 +1729,563 @@
             }
 
         }
+
+        @media (min-width: 1025px) {
+            .hero-subline,
+            .pillar-body,
+            .stat-label,
+            .sector-desc,
+            .work-card-description,
+            .testimonial-card .testimonial-text,
+            .testimonial-card .testimonial-role,
+            .faq-answer p,
+            .footer-legal a,
+            .footer-copy {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .pillar-name,
+            .sector-name,
+            .work-card-name,
+            .testimonial-card .testimonial-name,
+            .faq-question {
+                font-size: 24px;
+                font-weight: 500;
+            }
+
+            .contact-input,
+            textarea.contact-input {
+                line-height: 1.6;
+            }
+
+            .contact-input::placeholder {
+                font-size: 16px;
+            }
+        }
+
+        .nav-toggle,
+        .mobile-nav-drawer {
+            display: none;
+        }
+
+        .mobile-nav-drawer[hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .clients-heading,
+            .approach-headline,
+            .approach-statement,
+            .work-headline,
+            .sectors-headline,
+            .testimonials-headline,
+            .faq-headline,
+            .contact-headline {
+                font-size: 32px;
+                line-height: 1.25;
+            }
+
+            .pillar-name,
+            .stat-figure,
+            .sector-name,
+            .work-card-name,
+            .testimonial-card .testimonial-name,
+            .faq-question {
+                font-size: 20px;
+            }
+
+            .hero-subline,
+            .pillar-body,
+            .stat-label,
+            .sector-desc,
+            .work-card-description,
+            .testimonial-card .testimonial-text,
+            .testimonial-card .testimonial-role,
+            .faq-answer p,
+            .footer-legal a,
+            .footer-copy {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .contact-input,
+            textarea.contact-input {
+                line-height: 1.6;
+            }
+
+            .contact-input::placeholder {
+                font-size: 14px;
+            }
+
+            .clients-heading {
+                margin-bottom: 32px;
+            }
+
+            .approach-pillars,
+            .approach-stats,
+            .work-rail,
+            .sectors-grid,
+            .testimonials-grid,
+            .faq-body,
+            .contact-form {
+                margin-top: 32px;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            body.mobile-nav-open {
+                position: fixed;
+                left: 0;
+                right: 0;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            nav {
+                top: 16px;
+                left: 24px;
+                right: 24px;
+                z-index: 1001;
+            }
+
+            nav.solid {
+                background: transparent;
+                box-shadow: none;
+            }
+
+            nav.solid .nav-container {
+                background-color: color-mix(in srgb, var(--bg) 95%, transparent);
+                border-color: rgba(255, 255, 255, 0.08);
+                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(12px);
+            }
+
+            nav.hidden {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-container {
+                height: 64px;
+                padding: 0 8px;
+                border: 1px solid transparent;
+                border-radius: 999px;
+                background-color: transparent;
+                -webkit-backdrop-filter: blur(0);
+                backdrop-filter: blur(0);
+                transition: background-color 250ms ease-out, border-color 250ms ease-out, -webkit-backdrop-filter 250ms ease-out, backdrop-filter 250ms ease-out;
+            }
+
+            .nav-logo img {
+                width: auto;
+                height: 40px;
+                max-width: 100%;
+            }
+
+            .nav-logo {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+            }
+
+            .nav-center,
+            .nav-right {
+                display: none;
+            }
+
+            .nav-toggle {
+                position: relative;
+                z-index: 1;
+                display: flex;
+                flex: 0 0 40px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+            }
+
+            .nav-toggle::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 50%;
+            }
+
+            .nav-toggle-line {
+                position: relative;
+                z-index: 1;
+                display: block;
+                width: 20px;
+                height: 2px;
+                border-radius: 1px;
+                background: #fff;
+                transition: transform 180ms ease, opacity 180ms ease;
+            }
+
+            .nav-toggle.is-open .nav-toggle-line:first-child {
+                transform: translateY(4px) rotate(45deg);
+            }
+
+            .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.is-open .nav-toggle-line:last-child {
+                transform: translateY(-4px) rotate(-45deg);
+            }
+
+            .nav-toggle:focus-visible {
+                outline: 2px solid var(--blue-text);
+                outline-offset: 2px;
+                border-radius: 50%;
+            }
+
+            .mobile-nav-drawer {
+                position: fixed;
+                inset: 0;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                height: 100dvh;
+                padding: 112px 24px max(24px, env(safe-area-inset-bottom));
+                overflow-y: auto;
+                background: var(--bg);
+            }
+
+            .mobile-nav-list {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .mobile-nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 44px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                color: var(--text);
+                font-family: 'Manrope', sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                text-align: left;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .mobile-nav-services {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .mobile-nav-chevron {
+                width: 8px;
+                height: 8px;
+                margin-right: 5px;
+                border-right: 1px solid currentColor;
+                border-bottom: 1px solid currentColor;
+                transform: rotate(45deg) translateY(-2px);
+                transition: transform 180ms ease;
+            }
+
+            .mobile-nav-services[aria-expanded="true"] .mobile-nav-chevron {
+                transform: rotate(225deg) translate(-2px, -1px);
+            }
+
+            .mobile-service-links {
+                display: grid;
+                gap: 8px;
+                margin-top: 8px;
+                padding-left: 24px;
+            }
+
+            .mobile-service-links[hidden] {
+                display: none;
+            }
+
+            .mobile-nav-subitem {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+                color: var(--text-2);
+                font-family: 'Manrope', sans-serif;
+                font-size: 14px;
+                text-decoration: none;
+            }
+
+            .mobile-nav-contact {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 56px;
+                width: 100%;
+                height: 56px;
+                margin-top: auto;
+                padding: 0 24px;
+            }
+
+            .hero {
+                height: 100dvh;
+                min-height: 600px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .hero-content {
+                max-width: none;
+                margin: 0;
+                padding: 0 24px;
+            }
+
+            h1 {
+                max-width: none;
+                font-size: 38px;
+                line-height: 1.1;
+                margin-bottom: 24px;
+                text-align: left;
+                word-break: keep-all;
+            }
+
+            .hero-subline {
+                max-width: none;
+                margin-bottom: 32px;
+                text-align: left;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                display: flex;
+                flex: 0 0 calc((100% - 12px) / 2);
+                align-items: center;
+                justify-content: center;
+                width: calc((100% - 12px) / 2);
+                height: 48px;
+                padding: 0 8px;
+                white-space: nowrap;
+            }
+
+            .client {
+                box-sizing: border-box;
+                flex: 0 0 100px;
+                width: 100px;
+                height: 36px;
+                padding: 0;
+                margin-right: 32px;
+            }
+
+            .clients-row + .clients-row {
+                margin-top: 24px;
+            }
+
+            .approach-pillars {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .pillar-body {
+                margin-top: 12px;
+            }
+
+            .approach-stats {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 28px;
+            }
+
+            .stat-label {
+                margin-top: 8px;
+            }
+
+            .stat-left,
+            .stat-right {
+                text-align: center;
+            }
+
+            .stat-asterisk {
+                margin: 0 auto;
+            }
+
+            .work-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 24px;
+            }
+
+            .work-cta {
+                width: 100%;
+                min-height: 52px;
+                margin-top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .work-card {
+                flex: 0 0 280px;
+                width: 280px;
+                height: 400px;
+            }
+
+            .work-nav {
+                display: none;
+            }
+
+            .sectors-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+                gap: 12px;
+            }
+
+            .sector-card,
+            .sector-card-wide {
+                grid-column: 1 / -1;
+                width: 100%;
+                height: 240px;
+            }
+
+            .sector-content {
+                padding: 20px;
+            }
+
+            .sector-desc {
+                margin-top: 10px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .faq-question {
+                padding: 20px 0;
+            }
+
+            .faq-bubble {
+                display: none;
+            }
+
+            .contact {
+                height: auto;
+                min-height: 0;
+                padding: var(--section-padding) 24px;
+            }
+
+            .contact-card {
+                width: 100%;
+                max-width: none;
+                padding: 32px;
+                border-radius: 24px;
+            }
+
+            .contact-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-input {
+                height: 56px;
+            }
+
+            .contact-icon {
+                left: 8px;
+                top: 16px;
+            }
+
+            .contact-field.has-icon .contact-input {
+                padding-left: 40px;
+                padding-right: 8px;
+            }
+
+            textarea.contact-input {
+                height: 56px;
+                padding: 0 6px;
+            }
+
+            .contact-submit {
+                width: 100%;
+                min-height: 56px;
+            }
+
+            .footer {
+                padding: 80px 0;
+            }
+
+            .footer-logo {
+                width: auto;
+                height: 80px;
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-social {
+                order: 1;
+            }
+
+            .footer-legal {
+                order: 2;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            .footer-copy {
+                order: 3;
+            }
+
+            .footer-legal a {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+            }
+
+            .footer-social-label {
+                margin-right: 16px;
+            }
+
+            .footer-social-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+            }
+
+            .testimonial-more {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+            }
+
+            .testimonial-more[hidden] {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1770,15 +2313,42 @@
             <div class="nav-right">
                 <button class="nav-button">Contact</button>
             </div>
+            <button type="button" class="nav-toggle" id="mobileNavToggle" aria-label="Open menu" aria-controls="mobileNavDrawer" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
         </div>
     </nav>
+
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true" hidden>
+        <div class="mobile-nav-list">
+            <div class="mobile-nav-service-group">
+                <button type="button" class="mobile-nav-link mobile-nav-services" aria-expanded="false" aria-controls="mobileServiceLinks">
+                    What we do
+                    <span class="mobile-nav-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="mobile-service-links" id="mobileServiceLinks" hidden>
+                    <a href="#" class="mobile-nav-subitem">Brand story</a>
+                    <a href="#" class="mobile-nav-subitem">Demand generation</a>
+                    <a href="#" class="mobile-nav-subitem">Web assets</a>
+                    <a href="#" class="mobile-nav-subitem">Brand advocacy</a>
+                    <a href="#" class="mobile-nav-subitem">Learning</a>
+                </div>
+            </div>
+            <a href="#" class="mobile-nav-link">Work</a>
+            <a href="#" class="mobile-nav-link">Insights</a>
+            <a href="#" class="mobile-nav-link">About</a>
+        </div>
+        <a href="#contact" class="nav-button mobile-nav-contact">Contact</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
         <video class="hero-video" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
         <div class="hero-content">
-            <h1>Build the brand.<br>Shape the story.<br>Create the growth.</h1>
-            <p class="hero-subline">Elevait is a <strong>B2B marketing and communications agency</strong> powering communications for the sectors that drive India forward.</p>
+            <h1 lang="en">Powering Communications for the Sectors that Power India &amp; the World</h1>
+            <p class="hero-subline">Elevait is a <strong>B2B marketing agency</strong> that creates brand story, builds authority through public relations and generates demand.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary">Explore Our Work</button>
                 <button class="btn btn-secondary">Talk to Us</button>
@@ -2034,7 +2604,6 @@
                         <p class="testimonial-name">Ankur Sharma</p>
                         <p class="testimonial-role">Ex Vedanya Projects and Operations Lead</p>
                     </div>
-                    <div class="testimonial-media"></div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
@@ -2044,7 +2613,6 @@
                         <p class="testimonial-name">Vishal Jain</p>
                         <p class="testimonial-role">Co-founder, Roadcast Technologies</p>
                     </div>
-                    <div class="testimonial-media"></div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
@@ -2054,7 +2622,6 @@
                         <p class="testimonial-name">Richa Chugh</p>
                         <p class="testimonial-role">Ex Marketing, Trilegal</p>
                     </div>
-                    <div class="testimonial-media"></div>
                 </div>
             </div>
         </div>
@@ -2078,45 +2645,29 @@
 
             <div class="faq-body">
                 <div class="faq-list">
-                    <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>What does a B2B marketing agency do?</button></h3>
-                        <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
-                    </div>
                     <div class="faq-item is-open">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q2" aria-expanded="true" aria-controls="faq-a2"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>What B2B marketing services does Elevait offer?</button></h3>
-                        <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q1" aria-expanded="true" aria-controls="faq-a1"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>What does Elevait do as a B2B marketing agency in India?</button></h3>
+                        <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq-answer-inner"><p>Elevait helps B2B businesses sharpen their positioning, build demand and support sales through brand strategy, digital campaigns, websites and content.</p></div></div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>How is B2B marketing different from consumer marketing?</button></h3>
-                        <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Which industries does Elevait work with?</button></h3>
+                        <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq-answer-inner"><p>We focus on Industrial, Energy Tech, SaaS and Deep Tech businesses, shaping marketing around their technical offerings, target buyers and sales cycles.</p></div></div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Does Elevait work with technology, SaaS and deep-tech companies?</button></h3>
-                        <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>How does Elevait help generate qualified B2B leads?</button></h3>
+                        <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><div class="faq-answer-inner"><p>We combine clear messaging, targeted campaigns and conversion-focused web assets to attract relevant prospects and support meaningful sales conversations.</p></div></div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Can Elevait help with B2B lead generation and demand generation?</button></h3>
-                        <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Can Elevait help with brand positioning and technical storytelling?</button></h3>
+                        <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><div class="faq-answer-inner"><p>Yes. We turn complex products and capabilities into a clear brand story, helping decision-makers understand your value and what makes your business different.</p></div></div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Does Elevait help with brand positioning and storytelling?</button></h3>
-                        <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Does Elevait build websites for B2B companies?</button></h3>
+                        <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><div class="faq-answer-inner"><p>Yes. We create B2B websites that communicate your capabilities, showcase relevant work and guide potential customers towards an enquiry.</p></div></div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Can Elevait manage performance marketing, SEO and digital campaigns?</button></h3>
-                        <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q8" aria-expanded="false" aria-controls="faq-a8"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Does Elevait offer GEO and AI search visibility services?</button></h3>
-                        <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q9" aria-expanded="false" aria-controls="faq-a9"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>Can Elevait work as an extension of our in-house marketing team?</button></h3>
-                        <div class="faq-answer" id="faq-a9" role="region" aria-labelledby="faq-q9"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q10" aria-expanded="false" aria-controls="faq-a10"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>How can we start working with Elevait?</button></h3>
-                        <div class="faq-answer" id="faq-a10" role="region" aria-labelledby="faq-q10"><div class="faq-answer-inner"><p>Placeholder answer — the final copy for this question will replace this text. It sits here so the open state, spacing and transition can be reviewed.</p></div></div>
+                        <h3 class="faq-heading"><button type="button" class="faq-question" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span class="faq-icon"><img src="assets/add.svg" alt="" class="faq-plus"><img src="assets/minus.svg" alt="" class="faq-minus"></span>How does Elevait measure marketing results?</button></h3>
+                        <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="faq-answer-inner"><p>We agree on success metrics around your goals, tracking relevant enquiries, lead quality, sales opportunities and revenue contribution where data is available.</p></div></div>
                     </div>
                 </div>
 
@@ -2207,6 +2758,63 @@
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
+
+        // Mobile navigation drawer
+        (function() {
+            const toggle = document.getElementById('mobileNavToggle');
+            const drawer = document.getElementById('mobileNavDrawer');
+            const servicesButton = drawer.querySelector('.mobile-nav-services');
+            const serviceLinks = document.getElementById('mobileServiceLinks');
+            let savedScrollY = 0;
+
+            function setDrawerOpen(isOpen) {
+                if (isOpen) {
+                    savedScrollY = window.scrollY;
+                    document.body.style.top = `-${savedScrollY}px`;
+                    document.body.classList.add('mobile-nav-open');
+                    navbar.classList.remove('hidden');
+                    drawer.hidden = false;
+                    drawer.setAttribute('aria-hidden', 'false');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    toggle.setAttribute('aria-label', 'Close menu');
+                    toggle.classList.add('is-open');
+                    return;
+                }
+
+                if (drawer.hidden) return;
+                drawer.hidden = true;
+                drawer.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open menu');
+                toggle.classList.remove('is-open');
+                document.body.classList.remove('mobile-nav-open');
+                document.body.style.top = '';
+                window.scrollTo(0, savedScrollY);
+                toggle.focus({ preventScroll: true });
+            }
+
+            toggle.addEventListener('click', function() {
+                setDrawerOpen(toggle.getAttribute('aria-expanded') !== 'true');
+            });
+
+            servicesButton.addEventListener('click', function() {
+                const isExpanded = servicesButton.getAttribute('aria-expanded') === 'true';
+                servicesButton.setAttribute('aria-expanded', String(!isExpanded));
+                serviceLinks.hidden = isExpanded;
+            });
+
+            drawer.addEventListener('click', function(event) {
+                if (event.target.closest('a')) setDrawerOpen(false);
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && !drawer.hidden) setDrawerOpen(false);
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) setDrawerOpen(false);
+            });
+        })();
 
         // Client logo marquee — JS-driven so the hover slowdown can ease
         // smoothly. Changing a CSS animation-duration mid-run rebases progress
@@ -2546,26 +3154,23 @@
 
             const startDelay = 400;  // ms before typing starts
             const charDelay = 55;    // ms per character
-            const linePause = 300;   // extra ms at each line break
             const caretLinger = 600; // ms the cursor stays after the last character
 
             // Screen readers get the headline whole, not one character at a time
             headline.setAttribute('aria-label', headline.textContent.replace(/\s+/g, ' ').trim());
 
-            // Split each text node; <br> stays put and marks the line breaks
+            // Split the headline into individual characters for sequential reveal
             const steps = [];
-            Array.prototype.slice.call(headline.childNodes).forEach(function(node, index) {
+            Array.prototype.slice.call(headline.childNodes).forEach(function(node) {
                 if (node.nodeType !== Node.TEXT_NODE) return;
                 const frag = document.createDocumentFragment();
-                let first = true;
                 for (const ch of node.nodeValue) {
                     const span = document.createElement('span');
                     span.className = 'hero-char';
                     span.setAttribute('aria-hidden', 'true');
                     span.textContent = ch;
                     frag.appendChild(span);
-                    steps.push({ ch: span, newLine: first && index > 0 });
-                    first = false;
+                    steps.push(span);
                 }
                 headline.replaceChild(frag, node);
             });
@@ -2583,12 +3188,11 @@
                 }
 
                 if (caret) caret.classList.remove('is-caret');
-                caret = steps[i].ch;
+                caret = steps[i];
                 caret.classList.add('is-typed', 'is-caret');
                 i++;
 
-                const pause = steps[i] && steps[i].newLine ? linePause : 0;
-                setTimeout(next, charDelay + pause);
+                setTimeout(next, charDelay);
             }
 
             setTimeout(next, startDelay);
